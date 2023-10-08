@@ -29,8 +29,8 @@ This respository hosts notes and small scripts for the [Complete Video Course fo
 ⭐ [Lesson 1: Understanding and Using Containers](ckad-lesson-1/README.md)
 
 
-<h1 align="center" style="border-bottom: none; margin-top: 50px;">
+<p align="center" style="border-bottom: none; margin-top: 50px;">
     <a href="https://github.com/mx-ulises/certification-prep-cka-ckad" target="_blank">
         <img alt="" src="https://github.com/mx-ulises/certification-prep-cka-ckad/blob/main/assets/notes-logo.png?raw=true" style="border-radius: 50%; height: 100px;">
     </a>
-</h1>
+</p>

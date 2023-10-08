@@ -188,8 +188,8 @@ In this case, we can see that the container requires certain parameters to be se
 
 In Kubernetes environments, logs are accessed in a similar manner.
 
-<h1 align="center" style="border-bottom: none; margin-top: 50px;">
+<p align="center" style="border-bottom: none; margin-top: 50px;">
     <a href="https://github.com/mx-ulises/certification-prep-cka-ckad" target="_blank">
         <img alt="" src="https://github.com/mx-ulises/certification-prep-cka-ckad/blob/main/assets/notes-logo.png?raw=true" style="border-radius: 50%; height: 100px;">
     </a>
-</h1>
+</p>
