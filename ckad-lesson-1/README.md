@@ -45,7 +45,7 @@ Container images are standardized by the [Open Containers Initiative (OCI)](http
 
 Use instructions in the [Docker Docs official website](https://docs.docker.com/engine/install/).
 
-### ⭐ Run a 'Hello World" container
+### ⭐ Run a 'Hello World' container
 
 To run a sample Hello World container to test if your installation is working, use the following:
 
@@ -102,7 +102,7 @@ For more examples and ideas, visit:
 | `docker exec` | Run a command in a running container.
 
 
-### ⭐ Attaching and de-attaching from a container
+### ⭐ Attaching to and de-attaching from a container
 
 You can start a container in interactive mode by using the `run` command with the `-it` parameters.
 

@@ -5,7 +5,9 @@
     <br>
     README
 </h1>
-
+<h3 align="center" style="border-bottom: none">
+    Notes by: <a href="https://github.com/mx-ulises" target="_blank">Ulises Martinez</a>
+</h3>
 <hr />
 
 <p align="center">
@@ -28,6 +30,9 @@ This respository hosts notes and small scripts for the [Complete Video Course fo
 ### CKAD Course
 ⭐ [Lesson 1: Understanding and Using Containers](ckad-lesson-1/README.md)
 
+## Acknowledgements
+
+Thanks to [Whitney Lampkin](https://github.com/WhitneyLampkin/) for providing the tools to make this documentation project much easier! Having a great tool like [DevScriber](https://github.com/WhitneyLampkin/devscriber) makes things much easier to kick off.
 
 <p align="center" style="border-bottom: none; margin-top: 50px;">
     <a href="https://github.com/mx-ulises/certification-prep-cka-ckad" target="_blank">
