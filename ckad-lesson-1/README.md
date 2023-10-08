@@ -3,9 +3,11 @@
         <img alt="" src="https://github.com/mx-ulises/certification-prep-cka-ckad/blob/main/assets/notes-logo.png?raw=true" style="border-radius: 50%; height: 100px;">
     </a>
     <br>
-    Lesson 1: Understanding and Using Containers
+    CKAD Lesson 1: Understanding and Using Containers
 </h1>
-
+<h3 align="center" style="border-bottom: none">
+    Notes by: <a href="https://github.com/mx-ulises" target="_blank">Ulises Martinez</a>
+</h3>
 <hr />
 
 <p align="center">
