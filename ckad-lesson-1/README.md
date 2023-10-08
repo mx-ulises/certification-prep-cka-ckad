@@ -1,9 +1,9 @@
 <h1 align="center" style="border-bottom: none">
-    <a href="https://github.com/WhitneyLampkin/devscriber" target="_blank">
+    <a href="https://github.com/mx-ulises/certification-prep-cka-ckad" target="_blank">
         <img alt="" src="https://github.com/WhitneyLampkin/devscriber/blob/main/assets/default-img.png?raw=true" style="border-radius: 50%; height: 100px;">
     </a>
     <br>
-    README
+    Lesson 1: Understanding and Using Containers
 </h1>
 
 <hr />
@@ -14,39 +14,127 @@
 
 <div align="center">
 
-![GitHub language count](https://img.shields.io/github/languages/count/WhitneyLampkin/devscriber?label=Languages)
-![GitHub contributors](https://img.shields.io/github/contributors/WhitneyLampkin/devscriber?label=Contributors&color=yellow)
-![GitHub repo size](https://img.shields.io/github/repo-size/WhitneyLampkin/devscriber?label=Repo%20Size&color=teal)
-![GitHub repo file count (file type)](https://img.shields.io/github/directory-file-count/WhitneyLampkin/devscriber?label=Files&color=purple)
-
-
+![GitHub language count](https://img.shields.io/github/languages/count/mx-ulises/certification-prep-cka-ckad?label=Languages)
+![GitHub contributors](https://img.shields.io/github/contributors/mx-ulises/certification-prep-cka-ckad?label=Contributors&color=yellow)
+![GitHub repo size](https://img.shields.io/github/repo-size/mx-ulises/certification-prep-cka-ckad?label=Repo%20Size&color=teal)
+![GitHub repo file count (file type)](https://img.shields.io/github/directory-file-count/mx-ulises/certification-prep-cka-ckad?label=Files&color=purple)
 
 </div>
 
-This README is a template intended to make it easier for developers to quickly add documentation to their projects.
+## Introduction
 
-## Usage
+This lesson provides an overview of containers. It includes explanations of what a container is and how it differs from virtual machines (VMs). Additionally, it offers an overview of managing containers, container images, and utilizing container logs.
 
-```txt
-This is a placeholder for info that details how to use the project.
+## What is a container?
+
+A container is a ready-to-run application. The container uses a container runtime to execute. The runtime runs in the host operating system and is the one in charge of communicating with the host kernel and the container. Containers don't have a kernel, so they run on top of the host kernel using the container runtime. This differs from a VM as VMs have a kernel and a hypervisor, making them heavier to run.
+
+Some elements of a container environment are:
+- ***Images***: An environment that contains all the runtime components, including the application to run and the libraries.
+- ***Container***: Isolated runtime environments for the running application.
+- ***Registries***: Storage for images. It is used to share images accessible via public and private registries, making it easier to distribute container images. Access to them is usually free, but it might require additional authorization for heavier access. [DockerHub](https://hub.docker.com) is the most popular public registry and is the default in Kubernetes.
+- ***Container Runtime***: It is responsible for running the container on top of the OS. Some runtime solutions include Docker, runc, containerd, lxc, cri-o, etc.
+
+Container features are based on Linux; for example, Linux Kernel Namespaces and CGroups allow for strict isolation and resource limitations.
+
+Container images are standardized by the [Open Containers Initiative (OCI)](https://opencontainers.org). The OCI image-spec and runtime-spec are the specifications for packaging containers and running containers from images, respectively. Following the OCI specification is important for container interoperability.
+
+## Using and managing containers (in Docker)
+
+### ⭐ Installing Docker
+
+Use instructions in the [Docker Docs official website](https://docs.docker.com/engine/install/).
+
+### ⭐ Run a 'Hello World" container
+
+To run a sample Hello World container to test if your installation is working, use the following:
+
+```
+docker run hello-world
 ```
 
-## Features
+This should be the output:
 
-The project's features are as follows:
+```
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+70f5ac315c5a: Pull complete 
+Digest: sha256:4f53e2564790c8e7856ec08e384732aa38dc43c52f02952483e3f003afbf23db
+Status: Downloaded newer image for hello-world:latest
 
-⭐ Feature 1
-<br />
-⭐ Feature 2
-<br />
-⭐ Feature 3
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
 
-## License
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (arm64v8)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
 
-GNU General Public License 3.0, see [LICENSE](./LICENSE).
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+ ```
+
+### ⭐ Commands to manage containers
+
+| Command | Description |
+|---------|-------------------------------------------------------------|
+| `docker run` | Create and start a new container.
+| `docker ps`| List all running containers. |
+| `docker start` | Start a stopped container. |
+| `docker stop` | Stop a running container gracefully. |
+| `docker restart` | Restart a running container. |
+| `docker kill `| Forcefully kill a running container. |
+| `docker rm` | Remove one or more containers. |
+| `docker aux` | Display a list of all containers, including stopped ones. |
+| `docker inspect` | Display detailed information about a container. |
+| `docker inspect --format` | Display specific information about a container using a custom format. |
+| `docker attach` | Attach to a running container's terminal.
+| `docker exec` | Run a command in a running container.
+
+
+### ⭐ Attaching and de-attaching from a container
+
+You can start a container in interactive mode by using the `run` command with the `-it` parameters.
+
+```
+docker run -it busybox
+```
+
+If you want to detach from the container's terminal, you can press `Ctrl-p` and then `Ctrl-q`. This won't terminate the container, as you can see:
+
+```
+docker ps
+
+# CONTAINER ID   IMAGE                  COMMAND                  CREATED          STATUS          PORTS                       NAMES
+# c6def35a7111   busybox                "sh"                     24 seconds ago   Up 23 seconds                               busybox-container
+```
+
+You can reattach to the terminal by running:
+
+```
+docker attach busybox-container
+```
+
+To exit this specific container, run the `exit` command, and you will see the container being terminated again.
+
+```
+docker ps
+
+# CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+```
 
 <h1 align="center" style="border-bottom: none; margin-top: 50px;">
-    <a href="https://github.com/WhitneyLampkin/devscriber" target="_blank">
+    <a href="https://github.com/mx-ulises/certification-prep-cka-ckad" target="_blank">
         <img alt="" src="https://github.com/WhitneyLampkin/devscriber/blob/main/assets/default-img.png?raw=true" style="border-radius: 5%; height: 150px;">
     </a>
 </h1>

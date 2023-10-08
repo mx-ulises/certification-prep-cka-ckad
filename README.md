@@ -21,11 +21,9 @@
 
 </div>
 
-This respository hosts notes and small scripts for the [Complete Video Course for Certified Kubernetes Application Developer (CKAD) and Certified Kubernetes Administrator (CKA)](https://learning.oreilly.com/videos/certified-kubernetes-ckad/9780138191368/) by Sander van Vugt. Notes and scripts are organzied per lesson per course and an index can be found below:
+This respository hosts notes and small scripts for the [Complete Video Course for Certified Kubernetes Application Developer (CKAD) and Certified Kubernetes Administrator (CKA)](https://learning.oreilly.com/videos/certified-kubernetes-ckad/9780138191368/) by Sander van Vugt. Notes and scripts are organzied per lesson per course and an index can be found below.
 
-## Features
-
-The project's features are as follows:
+## Contents
 
 ### CKAD Course
 ⭐ [Lesson 1: Understanding and Using Containers](ckad-lesson-1/README.md)
