@@ -133,6 +133,61 @@ docker ps
 # CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 ```
 
+### ⭐ Commands to manage container images
+
+| Command | Description |
+|---------|-------------------------------------------------------------|
+| `docker pull` | Pulls (downloads) a Docker image from a registry. |
+| `docker images` | Lists all locally available Docker images. |
+| `docker image ls` | Lists Docker images in a more detailed format. |
+| `docker image inspect` | Displays detailed information about a specific Docker image. |
+| `docker image rm` | Removes one or more Docker images. |
+| `docker image rm -f` | Forcefully removes one or more Docker images. |
+| `docker image --help` | Displays help information for Docker image commands. |
+
+* ***Note:*** The Docker commands should be placed before the container image name, as the commands after the container image are considered commands for the container itself.
+
+### ⭐ Container logs and troubleshooting
+
+Containers are not connected to `STDOUT`. Logs are accessed via the `docker logs` command. To test this, we are going to use the MariaDB image and initialize it incorrectly:
+
+```
+docker run -d --name=mariadb-container mariadb
+
+# Output:
+
+# b2381bb3a3d5e94ffa4eca42343f2b64124447a34af9f21cac1dc9836f4a2a07
+```
+
+If we list the containers we have, we will see that the `mariadb-container` exited with an error code of `1`.
+
+```
+docker ps -a
+
+# Output:
+
+# CONTAINER ID   IMAGE                           COMMAND                  CREATED              STATUS                          PORTS                       NAMES
+# b2381bb3a3d5   mariadb                         "docker-entrypoint.s…"   About a minute ago   Exited (1) About a minute ago                               mariadb-container
+```
+
+We can inspect the logs generated using `docker logs` to troubleshoot the issue:
+
+```
+docker logs mariadb-container
+
+# Output:
+
+# 2023-10-08 03:48:38+00:00 [Note] [Entrypoint]: Entrypoint script for MariaDB Server 1:11.1.2+maria~ubu2204 started.
+# 2023-10-08 03:48:39+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
+# 2023-10-08 03:48:39+00:00 [Note] [Entrypoint]: Entrypoint script for MariaDB Server 1:11.1.2+maria~ubu2204 started.
+# 2023-10-08 03:48:39+00:00 [ERROR] [Entrypoint]: Database is uninitialized and password option is not specified
+#	You need to specify one of MARIADB_ROOT_PASSWORD, MARIADB_ROOT_PASSWORD_HASH, MARIADB_ALLOW_EMPTY_ROOT_PASSWORD and MARIADB_RANDOM_ROOT_PASSWORD
+```
+
+In this case, we can see that the container requires certain parameters to be set to configure the database password.
+
+In Kubernetes environments, logs are accessed in a similar manner.
+
 <h1 align="center" style="border-bottom: none; margin-top: 50px;">
     <a href="https://github.com/mx-ulises/certification-prep-cka-ckad" target="_blank">
         <img alt="" src="https://github.com/mx-ulises/certification-prep-cka-ckad/blob/main/assets/notes-logo.png?raw=true" style="border-radius: 50%; height: 100px;">
