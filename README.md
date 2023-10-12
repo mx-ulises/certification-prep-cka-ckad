@@ -31,6 +31,7 @@ This respository hosts notes and small scripts for the [Complete Video Course fo
  - [Lesson 1: Understanding and Using Containers](ckad-lesson-1/README.md)
  - [Lesson 2: Managing Container Images](ckad-lesson-2/README.md)
  - [Lesson 3: Understanding Kubernetes](ckad-lesson-3/README.md)
+ - [Lesson 4: Creating a Lab Environment](ckad-lesson-4/README.md)
 
 ## Acknowledgements
 
