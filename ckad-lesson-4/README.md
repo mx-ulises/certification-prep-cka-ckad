@@ -85,9 +85,19 @@ minikube status
 
 This is a list of other useful minikube commands:
 
-**TODO**
+| Minikube Command | Description |
+|-|-|
+| `minikube status` | Displays the current status of the Minikube cluster. |
+| `minikube start` | Starts the Minikube virtual machine and Kubernetes cluster. |
+| `minikube stop` | Stops the running Minikube virtual machine and Kubernetes cluster. |
+| `minikube ssh` | Logs into the Minikube virtual machine via SSH. |
+| `minikube dashboard` | Opens the Kubernetes dashboard in a web browser if it's installed. |
+| `minikube delete` | Deletes the Minikube cluster and its associated resources. |
+| `minikube ip` | Retrieves the IP address of the Minikube cluster. |
+| `minikube status` | Displays the current status of the Minikube cluster. |
+| `minikube version` | Shows the installed Minikube version. |
 
-## Install Kubectl and complete
+## Install Kubectl and completion
 
 ### ⭐ Install in Kubectl
 
