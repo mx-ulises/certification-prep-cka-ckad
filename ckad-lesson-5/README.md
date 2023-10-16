@@ -81,12 +81,12 @@ kind: Pod
 metadata:
   creationTimestamp: null
   labels:
-    run: MyNginx
-  name: MyNginx
+    run: mynginx
+  name: mynginx
 spec:
   containers:
   - image: nginx
-    name: MyNginx
+    name: mynginx
     resources: {}
   dnsPolicy: ClusterFirst
   restartPolicy: Always
@@ -118,15 +118,15 @@ kind: Pod
 metadata:
   creationTimestamp: null
   labels:
-    run: MyNginx
-  name: MyNginx
+    run: mynginx
+  name: mynginx
 spec:
   volumes:
     - name: shared-data
       emptyDir: {}
   containers:
   - image: nginx
-    name: MyNginx
+    name: mynginx
     volumeMounts:
       - name: shared-data
         mountPath: /usr/share/nginx/html
@@ -154,8 +154,8 @@ kind: Pod
 metadata:
   creationTimestamp: null
   labels:
-    run: MyNginx
-  name: MyNginx
+    run: mynginx
+  name: mynginx
 spec:
   volumes:
     - name: shared-data
@@ -170,7 +170,7 @@ spec:
       args: ["-c", "date >> /pod-data/index.html"]
   containers:
     - image: nginx
-      name: MyNginx
+      name: mynginx
       volumeMounts:
         - name: shared-data
           mountPath: /usr/share/nginx/html

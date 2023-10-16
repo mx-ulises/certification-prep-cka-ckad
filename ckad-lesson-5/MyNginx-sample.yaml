@@ -3,12 +3,12 @@ kind: Pod
 metadata:
   creationTimestamp: null
   labels:
-    run: MyNginx
-  name: MyNginx
+    run: mynginx
+  name: mynginx
 spec:
   containers:
   - image: nginx
-    name: MyNginx
+    name: mynginx
     resources: {}
   dnsPolicy: ClusterFirst
   restartPolicy: Always
