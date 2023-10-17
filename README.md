@@ -34,6 +34,7 @@ This respository hosts notes and small scripts for the [Complete Video Course fo
  - [Lesson 4: Creating a Lab Environment](ckad-lesson-4/README.md)
  - [Lesson 5: Managing Pod Basic Features](ckad-lesson-5/README.md)
  - [Lesson 6: Managing Pod Advanced Features](ckad-lesson-6/README.md)
+ - [Lesson 7: Managing Deployments](ckad-lesson-7/README.md)
 
 ## Acknowledgements
 
