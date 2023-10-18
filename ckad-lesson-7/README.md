@@ -44,6 +44,104 @@ Deployments manage Pods via ReplicaSets, with the ReplicaSet responsible for han
 
 Deployments enable zero-downtime application updates, particularly when you need to change container image versions or set new parameters for the deployment. When an update is applied, a new ReplicaSet with updated properties is created. After a successful update, the old ReplicaSet is no longer used and can be deleted, depending on your `deployment.spec.revisionHistoryLimit` configuration (the default is 10). The `updateStrategy` property dictates how updates are handled, with options for rolling updates or replacement.
 
+| Command | Description |
+|-|-|
+| `kubectl create deployment DeploymentName --replicas=N` | Create a new deployment with a specified number of replicas. |
+| `kubectl describe deployment DeploymentName` | Display detailed information about a specific deployment. |
+| `kubectl scale deployment DeploymentName --replicas=N` | Adjust the number of replicas for a deployment to the specified count. |
+| `kubectl edit deployment DeploymentName` | Open a text editor to modify the configuration of a specific deployment. |
+
+### ⭐ Update Stragegy
+
+When a Deployment changes, the Pods are immediately updated according to the `updateStrategy`. There are two options:
+
+ - `Recreate`: All Pods are killed, and new Pods are created. This will lead to temporary unavailability. It's useful if you cannot simultaneously run different versions of the application.
+ - `RollingUpdate`: The Pods are updated one at a time to guarantee the availability of the application. This is the preferred approach, and it can be tuned accordingly. The Deployment will make sure that enough Pods are running at all times, so when a change is applied with this strategy, the updated version is deployed in a new ReplicaSet. After the update has been confirmed as successful, the old ReplicaSet will be scaled to 0 to deactivate it.
+
+This is a list of commands to manage Rollouts.
+
+| Command | Description |
+|-|-|
+| `kubectl rollout history` | View the revision history of a resource's rollout. |
+| `kubectl rollout undo deployment DeploymentName --to-revision=1` | Rollback a deployment to a previous revision or rollout state. |
+| `kubectl rollout history deployment DeploymentName --revision=1` | Displays the revision history of a specific deployment, with a focus on revision 1. |
+
+A change in the replica count within a Deployment is not considered a new rollout and will not be logged as a revision.
+
+The `RollingUpdate` provides options to guarantee a certain minimal and maximal number of Pods available when an update is happening:
+
+ - `maxUnavailable`: Determines the maximum number of Pods that can be upgraded at the same time.
+ - `maxSurge`: The number of Pods that can run beyond the number of replicas configured in the Deployment to guarantee minimal availability.
+
+Here's an example of a YAML file for a Kubernetes Deployment:
+
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-deployment
+  labels:
+    app: example
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: example
+  template:
+    metadata:
+      labels:
+        app: example
+    spec:
+      containers:
+      - name: example-container
+        image: nginx:latest
+```
+
+## Labels, Selectors and Annotations
+
+Labels are key-value pairs that provide additional information about Kubernetes resources. They can be set manually or automatically and are widely used in Kubernetes. Labels are used to group related resources so they can be easily found by Selectors.
+
+Labels are used in resources such as Deployments and Services and use Selectors to find other related resources, such as Pods. Deployments find their Pods with certain Labels using Selectors. Services also use Selectors to find the endpoint Pods with the right Labels.
+
+Kubernetes cluster administrators can also set Labels to facilitate resource management using Selectors. To perform resource matching, you can use the flags `--selector key=value`.
+
+Deployments created with `kubectl create` automatically receive the label `app=appname`. Pods started with `kubectl run` also automatically receive the label `run=podname`.
+
+Annotations were originally used to provide detailed metadata of an object. They couldn't be used in Selector queries and were more related to information such as licenses, maintainers, etc. However, some new Kubernetes resources use annotations to provide additional functional information about these resources. Annotations are not as common as Labels.
+
+In a Deployment, if you remove the `app` label (or any other label in the Deployment's Selector) from a Pod, the deployment will start a new Pod as it is considered that the Pod is no longer a replica.
+
+## DaemonSets
+
+DaemonSets are a special implementation of Deployments. DaemonSets start one Pod instance on every node in a cluster. They are useful for software components like agents that need to be available on each cluster node. When nodes are added or removed, the DaemonSet will automatically add or remove Pods accordingly. DaemonSets don't configure the number of replicas like Deployments because they are created once per node.
+
+YAML files are used to create DaemonSets.
+
+```
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: example-daemonset
+  labels:
+    app: example
+spec:
+  selector:
+    matchLabels:
+      app: example
+  template:
+    metadata:
+      labels:
+        app: example
+    spec:
+      containers:
+      - name: example-container
+        image: nginx:latest
+```
+
+## Autoscaling
+
+You can manually scale the number of Pods in a Deployment using `kubectl scale`. In real clusters, Deployments are automatically scaled based on resource usage properties collected by the Metrics Server. The Horizontal Pod Autoscaler (HPA) observes usage statistics and triggers scaling after a certain threshold is crossed.
+
 <p align="center" style="border-bottom: none; margin-top: 50px;">
     <a href="https://github.com/mx-ulises/certification-prep-cka-ckad" target="_blank">
         <img alt="" src="https://github.com/mx-ulises/certification-prep-cka-ckad/blob/main/assets/notes-logo.png?raw=true" style="border-radius: 50%; height: 100px;">
