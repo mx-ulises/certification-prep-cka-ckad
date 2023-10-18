@@ -140,7 +140,17 @@ spec:
 
 ## Autoscaling
 
-You can manually scale the number of Pods in a Deployment using `kubectl scale`. In real clusters, Deployments are automatically scaled based on resource usage properties collected by the Metrics Server. The Horizontal Pod Autoscaler (HPA) observes usage statistics and triggers scaling after a certain threshold is crossed.
+You can manually adjust the number of Pods in a Deployment using `kubectl scale`. In real clusters, Deployments automatically scale based on resource usage data collected by the Metrics Server. The Horizontal Pod Autoscaler (HPA) monitors usage statistics and triggers scaling when a certain threshold is reached.
+
+Autoscaling is configured as follows:
+
+```
+kubectl autoscale deployment DeploymentName --cpu-percent=50 --min=2 --max=10
+```
+
+This command ensures that at least two Pods are running at all times, and when CPU utilization exceeds 50%, it creates new Pods, up to a maximum of 10.
+
+You can obtain a list of Autoscaling resources using `kubectl get hpa`.
 
 <p align="center" style="border-bottom: none; margin-top: 50px;">
     <a href="https://github.com/mx-ulises/certification-prep-cka-ckad" target="_blank">
