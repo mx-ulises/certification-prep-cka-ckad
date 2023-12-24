@@ -28,14 +28,12 @@ spec:
   template:
     metadata:
       creationTimestamp: null
-      annotations:
-        kubernetes.io/change-cause: "Update to green kuard"
       labels:
         run: kuard
     spec:
       containers:
-      - image: gcr.io/kuar-demo/kuard-amd64:green
-        imagePullPolicy: Always
+      - image: gcr.io/kuar-demo/kuard-amd64:blue
+        imagePullPolicy: IfNotPresent
         name: kuard-amd64
         resources: {}
         terminationMessagePath: /dev/termination-log
