@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: kuard-config
+  name: kuard-config
+spec:
+  containers:
+  - image: gcr.io/kuard-demo/kuard-amd64:blue
+    name: kuard-config
+    resources: {}
+    command:
+      - "/kuard"
+      - "$(EXTRA_PARAM)"
+    env:
+      - name: ANOTHER_PARAM
+        valueFrom:
+          configMapKeyRef:
+            name: my-config
+            key: another-param
+      - name: EXTRA_PARAM
+        valueFrom:
+          configMapKeyRef:
+            name: my-config
+            key: extra-param
+    volumeMounts:
+      - name: config-volume
+        mountPath: /config
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+  volumes:
+    - name: config-volume
+      configMap:
+        name: my-config
+status: {}
