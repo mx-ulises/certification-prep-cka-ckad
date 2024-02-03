@@ -28,17 +28,17 @@ This respository hosts notes and small scripts for the [Complete Video Course fo
 ## Contents
 
 ### CKAD Course
- - [Lesson 1: Understanding and Using Containers](ckad-lesson-1/README.md)
- - [Lesson 2: Managing Container Images](ckad-lesson-2/README.md)
- - [Lesson 3: Understanding Kubernetes](ckad-lesson-3/README.md)
- - [Lesson 4: Creating a Lab Environment](ckad-lesson-4/README.md)
- - [Lesson 5: Managing Pod Basic Features](ckad-lesson-5/README.md)
- - [Lesson 6: Managing Pod Advanced Features](ckad-lesson-6/README.md)
- - [Lesson 7: Managing Deployments](ckad-lesson-7/README.md)
- - [Lesson 8: Managing Networking](ckad-lesson-8/README.md)
+ - [Lesson 1: Understanding and Using Containers](ckad/lesson-1/README.md)
+ - [Lesson 2: Managing Container Images](ckad/lesson-2/README.md)
+ - [Lesson 3: Understanding Kubernetes](ckad/lesson-3/README.md)
+ - [Lesson 4: Creating a Lab Environment](ckad/lesson-4/README.md)
+ - [Lesson 5: Managing Pod Basic Features](ckad/lesson-5/README.md)
+ - [Lesson 6: Managing Pod Advanced Features](ckad/lesson-6/README.md)
+ - [Lesson 7: Managing Deployments](ckad/lesson-7/README.md)
+ - [Lesson 8: Managing Networking](ckad/lesson-8/README.md)
 
 ### CKA Course
- - [CKA Lesson 2: Creating Kubernetes Cluster with kubeadm](cka-lesson-2/README.md)
+ - [Lesson 2: Creating Kubernetes Cluster with kubeadm](cka/lesson-2/README.md)
 
 ## Acknowledgements
 
