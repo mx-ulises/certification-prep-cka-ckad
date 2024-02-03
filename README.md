@@ -37,6 +37,9 @@ This respository hosts notes and small scripts for the [Complete Video Course fo
  - [Lesson 7: Managing Deployments](ckad-lesson-7/README.md)
  - [Lesson 8: Managing Networking](ckad-lesson-8/README.md)
 
+### CKA Course
+ - [CKA Lesson 2: Creating Kubernetes Cluster with kubeadm](cka-lesson-2/README.md)
+
 ## Acknowledgements
 
 Thanks to [Whitney Lampkin](https://github.com/WhitneyLampkin/) for providing the tools to make this documentation project much easier! Having a great tool like [DevScriber](https://github.com/WhitneyLampkin/devscriber) makes things much easier to kick off.
