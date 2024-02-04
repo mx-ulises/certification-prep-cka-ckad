@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+#kind: Deployment
+kind: DaemonSet
+metadata:
+  creationTimestamp: null
+  labels:
+    app: myds
+  name: myds
+spec:
+  #replicas: 1
+  selector:
+    matchLabels:
+      app: myds
+  #strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: myds
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        resources: {}
+status: {}

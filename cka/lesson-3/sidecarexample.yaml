@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: sidecarexample
+  name: sidecarexample
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx
+    # Start: Main container reading from shared storage
+    volumeMounts:
+    - name: shared-data
+      mountPath: /usr/share/nginx/html
+    # End: Main container reading from shared storage
+  # Start: Sidecar container writing to the shared storage
+  - name: sidecarexample
+    args:
+    - /bin/sh
+    - -c
+    - echo hello world from sidecar > /messages/index.html && sleep 600
+    image: busybox
+    resources: {}
+    volumeMounts:
+    - name: shared-data
+      mountPath: /messages
+  # End: Sidecar container writing to the shared storage
+  # Start: Volume to share data across containers
+  volumes:
+  - name: shared-data
+    emptyDir: {}
+  # End: Volume to share data across containers
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
