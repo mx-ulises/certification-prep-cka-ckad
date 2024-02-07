@@ -1,0 +1,58 @@
+# Start: Persistent Volume
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-demo
+  labels:
+    type: local
+spec:
+  storageClassName: demo # Storage class is important to be identified by PVC
+  hostPath:  # The storage type is a hostPath in path "/mydata"
+    path: "/mydata"
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+# End: Persistent Volume
+---
+# Start: Persistent Volume Claim
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-demo
+spec:
+  storageClassName: demo # It is important that storage class is same as in PV
+  volumeName: pvc-demo
+  resources:
+    requests:
+      storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+# End: Persistent Volume Claim
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: pod-pvc-volume
+  name: pod-pvc-volume
+spec:
+  containers:
+  - image: nginx
+    name: pod-pvc-volume
+    resources: {}
+    # Start: Mount Volume
+    volumeMounts:
+    - mountPath: /data
+      name: pv-storage
+    # End: Mount Volume
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+  # Start: Volume Definition
+  volumes:
+  - name: pv-storage
+    persistentVolumeClaim:
+      claimName: pvc-demo
+  # End: Volume Definition
+status: {}
