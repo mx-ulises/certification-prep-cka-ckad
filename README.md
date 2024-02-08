@@ -41,7 +41,7 @@ This respository hosts notes and small scripts for the [Complete Video Course fo
  - [Lesson 2: Creating Kubernetes Cluster with kubeadm](cka/lesson-2/README.md)
  - [Lesson 3: Deploying Kubernetes Applications](cka/lesson-3/README.md)
  - [Lesson 4: Managing Storage](cka/lesson-4/README.md)
- - [Lesson 5: Managing Application Access](cka/lesson-4/README.md)
+ - [Lesson 5: Managing Application Access](cka/lesson-5/README.md)
 
 ## Acknowledgements
 
