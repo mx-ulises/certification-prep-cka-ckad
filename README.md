@@ -44,7 +44,7 @@ This respository hosts notes and small scripts for the [Complete Video Course fo
  - [Lesson 5: Managing Application Access](cka/lesson-5/README.md)
  - [Lesson 6: Managing Clusters](cka/lesson-6/README.md)
  - [Lesson 7: Performing Node Maintenance Tasks](cka/lesson-7/README.md)
- - [Lesson 7: Managing Scheduling](cka/lesson-8/README.md)
+ - [Lesson 8: Managing Scheduling](cka/lesson-8/README.md)
 
 ## Acknowledgements
 

@@ -110,6 +110,53 @@ A toleration allow a `Pod` to run on a node with a specific taint, a toleration 
 
 While deffining the toleration, the `Pod` needs a key, operator and value. Some commonds operators are `Equal` and `Exists`. 
 
+## Limits and Quotas
+
+### ⭐ Quotas
+
+The `Quota` is an API object that limits the total resources available in a `Namespace`. If a `Namespace` is configured with `Quota`, applications in that `Namespace` must be configured with resource settings in `Pod` in `pod.spec.containers.resources`. The goal is to define maximum resources that can be consumed within a `Namespace` by all the applications.
+
+To create `Quota` in a namespace use the following commands:
+
+```
+kubectl create quota <quotaName> --hard pods=<podLimit>,cpu=<cpuLimit>,memory=<memoryLimit> namespace <namespaceName>
+```
+
+To set resource `requests` and `limits` in a resource (`Pod`, `Deployment`, etc...) use:
+
+```
+kubectl set resources <resourceTypeName> <resourceName> --requests cpu=<cpuLimit>,memory=<memoryLimit> --limits cpu=<cpuLimit>,memory=<memoryLimit> -n <namespaceName>
+```
+### ⭐ Limit Range
+
+The `LimitRange` is and API object that limits resource usage per container or `Pod` in a `Namespace`. The goal is to set a default restriction for each application in a `Namespace`. It has three options:
+
+ - `type`: specifies wheter it applies to `Pod` or container
+ - `defaultRequest`: the default resources the application will request
+ - `default`: the maximum resoures that the application can use
+
+To create limit range, the best is to use an example from documentation such as [Limit Range](https://kubernetes.io/docs/concepts/policy/limit-range/):
+
+```
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: cpu-resource-constraint
+spec:
+  limits:
+  - default: # this section defines default limits
+      cpu: 500m
+    defaultRequest: # this section defines default requests
+      cpu: 500m
+    max: # max and min define the limit range
+      cpu: "1"
+    min:
+      cpu: 100m
+    type: Pod
+```
+
+If you change the `requests` to some number above the `default` limit, then you will have some errors, and you will need to fix your `Pod` specification to override the `default` limit.
+
 <p align="center" style="border-bottom: none; margin-top: 50px;">
     <a href="https://github.com/mx-ulises/certification-prep-cka-ckad" target="_blank">
         <img alt="" src="https://github.com/mx-ulises/certification-prep-cka-ckad/blob/main/assets/notes-logo.png?raw=true" style="border-radius: 50%; height: 100px;">
