@@ -51,6 +51,31 @@ Use this flow to troubleshoot `Pod`:
  1. If we find that a `Pod` has issues starting its primary container, then we should use `kubectl logs` to investigate the application logs.
  1. If the `Pod` is running, but not behaving as expected, we can open an interactive shell on the `Pod` for further troubleshooting: `kubectl exec -it <podName> -- sh`
 
+### ⭐ Troubleshooting Nodes
+
+These commands are useful to troubleshoot nodes:
+
+| Command                                         | Description                                                                                                             |
+|-------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
+| `kubectl cluster-info`                          | Get generic cluster health.                                                                                             |
+| `kubectl cluster-info dump`                     | Provides excessive information from cluster logs.                                                                       |
+| `kubectl get nodes`                             | Retrieve a generic overview of health of the nodes.                                                                     |
+| `kubectl get pods -n kube-system`               | Displays Kubernetes core services running on the control node such as the kube-proxy.                                   |
+| `kubectl describe node <nodeName>`              | Shows detailed information about the node. Check the `Conditions` section for operational information.                  |
+| `sudo systemctl status kubelet`                 | Check status information about the kubelet in the node.                                                                 |
+| `sudo systemctl restart kubelet`                | Restart the kubelet to fix issues.                                                                                      |
+| `sudo openssl x509 -in /var/lib/kubelet/pki/kubelet.crt -text` | Verify the kubelet certificates' validity. This is rarely necessary.                                     |
+
+### Fixing Application Access Problems
+
+Use these commands to troubleshoot and fix application network access problems:
+
+| Command                           | Description                                                                                                      |
+|-----------------------------------|------------------------------------------------------------------------------------------------------------------|
+| `kubectl get endpoints`          | Retrieves a list of services in the cluster and their endpoints. If a service doesn't have an endpoint, it indicates that `Pod` are not matched with the service. |
+| `kubectl get service`            | Retrieves a list of services. The cluster IP can be used with `curl` to check access to an app.                 |
+| `kubectl edit service <serviceName>` | Allows analysis and editing of the configuration of a service. If a selector is incorrect, it can be modified using this command. |
+
 <p align="center" style="border-bottom: none; margin-top: 50px;">
     <a href="https://github.com/mx-ulises/certification-prep-cka-ckad" target="_blank">
         <img alt="" src="https://github.com/mx-ulises/certification-prep-cka-ckad/blob/main/assets/notes-logo.png?raw=true" style="border-radius: 50%; height: 100px;">
