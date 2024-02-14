@@ -45,6 +45,7 @@ This respository hosts notes and small scripts for the [Complete Video Course fo
  - [Lesson 6: Managing Clusters](cka/lesson-6/README.md)
  - [Lesson 7: Performing Node Maintenance Tasks](cka/lesson-7/README.md)
  - [Lesson 8: Managing Scheduling](cka/lesson-8/README.md)
+ - [Lesson 9: Networking](cka/lesson-9/README.md)
  - [Lesson 11: Logging, Monitoring and Troubleshooting](cka/lesson-11/README.md)
 
 ## Acknowledgements
