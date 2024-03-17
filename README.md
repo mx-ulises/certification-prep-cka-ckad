@@ -49,6 +49,9 @@ This respository hosts notes and small scripts for the [Complete Video Course fo
  - [Lesson 10: Managing Security Settings](cka/lesson-10/README.md)
  - [Lesson 11: Logging, Monitoring and Troubleshooting](cka/lesson-11/README.md)
 
+### ICA Mesh Week Course
+ - [Session 1: Istio installation, upgrade & configuration](ica/session-1/README.md)
+
 ## Acknowledgements
 
 Thanks to [Whitney Lampkin](https://github.com/WhitneyLampkin/) for providing the tools to make this documentation project much easier! Having a great tool like [DevScriber](https://github.com/WhitneyLampkin/devscriber) makes things much easier to kick off.
