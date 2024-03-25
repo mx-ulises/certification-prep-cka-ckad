@@ -51,6 +51,7 @@ This respository hosts notes and small scripts for the [Complete Video Course fo
 
 ### ICA Mesh Week Course
  - [Session 1: Istio installation, upgrade & configuration](ica/session-1/README.md)
+ - [Session 2: Istio traffic management](ica/session-2/README.md)
 
 ## Acknowledgements
 
