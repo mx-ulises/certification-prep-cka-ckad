@@ -53,6 +53,9 @@ This respository hosts notes and small scripts for the [Complete Video Course fo
  - [Session 1: Istio installation, upgrade & configuration](ica/session-1/README.md)
  - [Session 2: Istio traffic management](ica/session-2/README.md)
 
+### ICA Topics
+ - [Topic 1: Istio Installation](ica/topic-1/README.md)
+
 ## Acknowledgements
 
 Thanks to [Whitney Lampkin](https://github.com/WhitneyLampkin/) for providing the tools to make this documentation project much easier! Having a great tool like [DevScriber](https://github.com/WhitneyLampkin/devscriber) makes things much easier to kick off.
