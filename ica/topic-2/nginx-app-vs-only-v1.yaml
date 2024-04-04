@@ -1,0 +1,21 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: nginx-app-vs
+  namespace: traffic-routing
+spec:
+  hosts:
+  - nginx-app
+  http:
+  - match:
+    - headers:
+        route-to-v2:
+          exact: "true"
+    route:
+    - destination:
+        host: nginx-app
+        subset: v2
+  - route:
+    - destination:
+        host: nginx-app
+        subset: v1
