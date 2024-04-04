@@ -7,14 +7,6 @@ spec:
   hosts:
   - nginx-app
   http:
-  - match:
-    - headers:
-        route-to-v2:
-          exact: "true"
-    route:
-    - destination:
-        host: nginx-app
-        subset: v2
   - route:
     - destination:
         host: nginx-app
