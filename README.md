@@ -56,6 +56,7 @@ This respository hosts notes and small scripts for the [Complete Video Course fo
 ### ICA Topics
  - [Topic 1: Istio Installation](ica/topic-1/README.md)
  - [Topic 2: Request Routing](ica/topic-2/README.md)
+ - [Topic 3: Fault Injection](ica/topic-3/README.md)
 
 ## Acknowledgements
 

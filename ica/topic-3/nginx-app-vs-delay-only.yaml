@@ -1,0 +1,26 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: nginx-app-vs
+  namespace: fault-injection
+spec:
+  hosts:
+  - nginx-app
+  http:
+  - match:
+    - headers:
+        route-to-delay:
+          exact: "true"
+    route:
+    - destination:
+        host: nginx-app
+        subset: v1
+    fault:
+      delay:
+        fixedDelay: 7s
+        percentage:
+          value: 100
+  - route:
+    - destination:
+        host: nginx-app
+        subset: v1
