@@ -59,6 +59,7 @@ This respository hosts notes and small scripts for the [Complete Video Course fo
  - [Topic 3: Fault Injection](ica/topic-3/README.md)
  - [Topic 4: Traffic Shifting](ica/topic-4/README.md)
  - [Topic 5: Traffic Mirroring](ica/topic-5/README.md)
+ - [Topic 6: Circuit Breaking](ica/topic-6/README.md)
 
 ## Acknowledgements
 
