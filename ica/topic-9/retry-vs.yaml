@@ -1,0 +1,16 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: nginx-app
+  namespace: retry
+spec:
+  hosts:
+  - "nginx-app"
+  http:
+  - route:
+    - destination:
+        host: nginx-app
+    retries:
+      attempts: 5
+      #perTryTimeout: 2s
+      retryOn: connect-failure,503
