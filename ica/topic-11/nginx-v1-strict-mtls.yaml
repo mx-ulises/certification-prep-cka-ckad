@@ -1,0 +1,12 @@
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: "strict-v1-policy"
+  namespace: "peer-authorization"
+spec:
+  selector:
+    matchLabels:
+      app: nginx-app
+      version: v1
+  mtls:
+    mode: DISABLE
