@@ -1,5 +1,7 @@
 # Commands to communicate to different pods/services
 
+Links: [Network Policies](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
+
 ```
 
 # v1 to v2 (should be allowed with network policy)
