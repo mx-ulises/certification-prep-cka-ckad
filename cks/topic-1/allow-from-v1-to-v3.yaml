@@ -1,0 +1,45 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: egress-from-v1-to-v3
+  namespace: network-policy-1
+spec:
+  podSelector:
+    matchLabels:
+      run: nginx-app-v1
+  policyTypes:
+    - Egress
+  egress:
+    - to:
+        - podSelector:
+            matchLabels:
+              namespace: network-policy-2
+          namespaceSelector:
+            matchLabels:
+              run: nginx-app-v3
+      ports:
+        - protocol: TCP
+          port: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: ingress-from-v1-to-v3
+  namespace: network-policy-2
+spec:
+  podSelector:
+    matchLabels:
+      run: nginx-app-v2
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              namespace: network-policy-1
+          namespaceSelector:
+            matchLabels:
+              run: nginx-app-v1
+      ports:
+        - protocol: TCP
+          port: 80
