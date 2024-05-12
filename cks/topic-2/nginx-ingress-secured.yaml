@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx-app-v1
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  namespace: ingress
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+      - localhost
+    secretName: nginx-app-v1
+  rules:
+  - host: localhost
+    http:
+      paths:
+      - path: /test
+        pathType: Prefix
+        backend:
+          service:
+            name: nginx-app-v1
+            port:
+              number: 80
