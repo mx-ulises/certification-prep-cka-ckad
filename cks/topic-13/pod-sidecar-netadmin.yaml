@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-security-context
+spec:
+  containers:
+  - name: main
+    image: nginx
+  - name: proxy
+    image: alpine
+    command: ["sh", "-c", "cat /proc/1/status && sleep 3600"]
+    securityContext:
+      capabilities:
+        add: ["NET_ADMIN"]
