@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: pod-security-context
+  name: pod-security-context-capabilities
 spec:
   containers:
   - name: main
