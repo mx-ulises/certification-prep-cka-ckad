@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: pod-with-image-digest
+  name: pod-with-image-digest
+spec:
+  containers:
+  - name: pod-with-image-digest
+    #image: nginx # This is a tag based image
+    image: nginx@sha256:a484819eb60211f5299034ac80f6a681b06f89e65866ce91f356ed7c72af059c # This is a digest based image
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
