@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: app-armor-pod
+  name: app-armor-pod
+spec:
+  securityContext: # add
+    appArmorProfile: # add
+      type: Localhost # add
+      localhostProfile: k8s-apparmor-example-deny-write # add
+  containers:
+  - image: nginx
+    name: app-armor-pod
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
