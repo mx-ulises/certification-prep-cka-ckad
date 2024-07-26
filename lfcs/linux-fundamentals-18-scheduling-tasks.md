@@ -29,5 +29,6 @@ This is used to run tasks that only need to run once. It uses `atd` daemon and t
 | `systemctl status atd`    | Displays the status of the `atd` service, which handles scheduled one-time tasks.                 |
 | `at teatime`              | Schedules a command to run at teatime (usually interpreted as 4 PM).                              |
 | `at 10:20`                | Schedules a command to run at 10:20 AM.                                                           |
+| `at now + 5m`             | Schedules a command to run 5 minutes from now.                                                    |
 | `atq`                     | Lists the user's pending scheduled `at` jobs.                                                     |
 | `atrm 1`                  | Removes the scheduled `at` job with job number 1.                                                 |
